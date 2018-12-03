@@ -1,0 +1,38 @@
+import random
+
+name = input("Hello, welcome to my game! What is your name? ")
+print ("Hello",name + "!")
+
+question = input( "Would you like to play a game? [Y/N] ")
+if question == "y":
+    print ("Let's get started then! I'm thinking of a five letter word...")
+    print ("Why don't you guess a letter?")
+if question == "n":
+    print(" Oh okay.... Sorry to see you go")
+    quit()
+words = ["WORLD", "HOUSE", "APART", "LOOPY"]
+random.shuffle(words)
+answer = list(words[0])
+
+screen = []
+screen.extend(answer)
+
+for i in range (len(screen)):
+    screen[i] = "_"
+print(" " .join(screen))
+
+
+number = 0
+
+while number < len(answer):
+    guess = input("Guess a letter: ")
+    guess = guess.upper()
+    print(number)
+    for i in range (len(answer)):
+        if answer[i] == guess:
+            screen[i] = guess
+            number = number + 1
+    print(" ".join(screen))
+    print()
+
+print("Congratulations, you won!")
